@@ -27,12 +27,13 @@ function mutiple (m1: Matrix, m2: Matrix) : Matrix {
     for (let i = 0; i < rowNumber; i++) {
         for (let j = 0; j < columnNumber; j++) {
             if (j == 0) result.push([0])
-            let a = 0
-            m1.data[i].forEach((item, row) => {
+            result[i][j] = m1.data[i].reduce((foo, rowItem, rowIdx) => {
                 // i行 * j列
-                a += item * m2.data[row][j]
-            })
-            result[i][j] = a
+                const columnItem = m2.data[rowIdx][j]
+                foo += rowItem * columnItem
+                return foo
+            }, 0)
+            
         }
     }
     return new Matrix(result)
