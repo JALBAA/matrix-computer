@@ -29,7 +29,7 @@ function mutiple (m1: Matrix, m2: Matrix) : Matrix {
             if (j == 0) result.push([0])
             let a = 0
             m1.data[i].forEach((item, row) => {
-                // 一行
+                // i行 * j列
                 a += item * m2.data[row][j]
             })
             result[i][j] = a
